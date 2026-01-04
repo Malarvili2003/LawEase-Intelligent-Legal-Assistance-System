@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================
+      GLOBAL THEME COLORS
+   ============================ */
+:root {
+  --bg: #0B0F1F;
+  --card: #111830;
+  --muted: #94a3b8;
+  --accent: #8b5cf6;
+}
+
+[data-theme='light'] {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --muted: #475569;
+  --accent: #6d28d9;
+}
+
+/* ============================
+      GLOBAL BACKGROUND
+   ============================ */
+body {
+  @apply bg-gradient-to-br from-[#0B0F1F] via-[#111A3A] to-[#0B0F1F] text-slate-100;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto;
+}
+[data-theme='light'] body { color: #0b1220; }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+}
+
+.left { width: 320px; flex-shrink: 0; }
+.right { width: 260px; flex-shrink: 0; }
+.main { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+/* ============================
+          CARDS
+   ============================ */
+.card {
+  background: linear-gradient(180deg, #111830, #0A1128);
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+/* ============================
+       CHAT MESSAGE AREA
+   ============================ */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  /* Prevents messages hiding behind input bar */
+  padding-bottom: 180px;
+
+  /* Smooth ChatGPT-style scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+/* ============================
+       MESSAGE WRAPPER
+   ============================ */
+.msg-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* ============================
+           USER MESSAGE
+   ============================ */
+.user-msg {
+  background: #3b82f6;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 14px;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: 10px;
+  line-height: 1.55;
+  font-size: 15px;
+  position: relative;
+}
+
+/* ============================
+           BOT MESSAGE
+   ============================ */
+.bot-msg {
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 14px 18px;
+  border-radius: 14px;
+  max-width: 75%;
+  margin-left: 10px;
+  line-height: 1.55;
+  border-left: 4px solid #6366f1;
+  font-size: 15px;
+  position: relative;
+}
+
+/* ============================
+       MARKDOWN STYLING
+   ============================ */
+.bot-msg h1, .user-msg h1 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.bot-msg h2, .user-msg h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.bot-msg ul, .bot-msg ol,
+.user-msg ul, .user-msg ol {
+  padding-left: 20px;
+}
+.bot-msg strong, .user-msg strong {
+  color: #ffdd57;
+}
+
+/* ============================
+       FLOATING COPY BUTTON
+   ============================ */
+.floating-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: opacity 0.2s ease, background 0.2s ease;
+  color: #c9c9c9;
+}
+
+/* Show on hover */
+.msg-wrapper:hover .floating-copy-btn {
+  opacity: 1;
+}
+
+.floating-copy-btn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* ============================
+         INPUT BAR
+   ============================ */
+.input {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  align-items: center;
+
+  z-index: 20; /* ensures it stays above messages */
+}
+
+.input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #0F1A37;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+/* ============================
+            BUTTONS
+   ============================ */
+.btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+}
+.btn:hover { opacity: 0.85; }
+
+/* ============================
+       RESPONSIVE
+   ============================ */
+@media(max-width: 900px) {
+  .app { flex-direction: column; }
+  .left, .right { width: 100%; }
+}

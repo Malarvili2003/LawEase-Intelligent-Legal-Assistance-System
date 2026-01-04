@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-multipart
+requests
+PyPDF2
+python-docx
+pdfplumber

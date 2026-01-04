@@ -1,0 +1,1 @@
+#!/bin/bash\necho 'Start backend:'\necho 'cd backend && python -m venv venv && pip install -r requirements.txt && uvicorn main:app --reload --port 8000 &'\necho 'Then in another terminal: cd frontend && npm install && npm run dev'\n
