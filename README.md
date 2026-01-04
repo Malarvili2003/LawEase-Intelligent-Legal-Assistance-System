@@ -128,6 +128,6 @@ url : npm run dev -- --host
 
 ## 👩‍💻 Author
 
-**Malar**
+**Malarvili S**
 
 For feedback or contributions, feel free to open an issue or PR.
